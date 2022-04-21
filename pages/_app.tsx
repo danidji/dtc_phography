@@ -1,15 +1,16 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
+
+import Layout from "../src/components/Layout"
 import { ThemeContextProvider } from '../src/state/theme.context'
 
-import GlobalTheme from '../src/components/GlobalTheme'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeContextProvider>
-      <GlobalTheme>
+      <Layout>
         <Component {...pageProps} />
-      </GlobalTheme>
+      </Layout>
     </ThemeContextProvider>)
 }
 
