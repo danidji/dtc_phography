@@ -17,7 +17,7 @@ export const useThemeContext = (): ThemeContextType => {
   return useContext(ThemeContext);
 }
 
-export const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
+export const ThemeContextProvider = ({ children }: { children: ReactNode }): JSX.Element => {
   return (
     <ThemeContext.Provider value={themeState}>
       {children}
