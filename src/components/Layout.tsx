@@ -1,4 +1,5 @@
 import React, { FC, ReactNode } from 'react'
+import styled from 'styled-components'
 
 import Header from './Header'
 import Footer from './Footer'
@@ -10,13 +11,17 @@ const Layout = ({ children }: { children: ReactNode }): JSX.Element => {
   const { width } = useWindowDimensions()
 
   return (
-    <div className="layout">
+    <LayoutWrapper className="layout_wrapper">
       <Header />
       {(width && width < 768) && <HambergerMenu />}
       {children}
       <Footer />
-    </div>
+    </LayoutWrapper>
   )
 }
 
 export default Layout
+
+const LayoutWrapper = styled.div`
+  position: relative;
+`
