@@ -1,6 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
 
+import Navbar from './Navbar'
+
 const Header = (): JSX.Element => {
 
 
@@ -14,6 +16,7 @@ const Header = (): JSX.Element => {
           height="200rem"
         />
       </div>
+      <Navbar />
     </div>
   )
 }
