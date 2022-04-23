@@ -1,5 +1,10 @@
 import React from 'react'
 import Link from 'next/link'
+import styled from 'styled-components';
+
+import { ThemePropsType } from '../interfaces';
+import { useThemeContext } from '../state/theme.context';
+
 
 interface NavbarItemsType {
   id: string,
@@ -16,23 +21,36 @@ const navBarItems: NavbarItemsType[] = [
   { id: "contact", title: "Contact", href: "/contact" }
 ]
 
-const renderNavLink = (items: NavbarItemsType[]): JSX.Element[] => {
-  return items.map((item: NavbarItemsType): JSX.Element => (
-    <li key={item.id}>
-      <Link href={item.href}>
-        <a>{item.title}</a>
-      </Link>
-    </li>
-  ))
-}
 
 const Navbar = (): JSX.Element => {
 
+  const { color } = useThemeContext();
+
+  const renderNavLink = (items: NavbarItemsType[]): JSX.Element[] => {
+    return items.map((item: NavbarItemsType): JSX.Element => (
+      <StyledLi key={item.id}>
+        <Link href={item.href}>
+          <StyledH3 color={color.background}>{item.title}</StyledH3>
+        </Link>
+      </StyledLi>
+    ))
+  }
   return (
-    <ul>
+    <StyledUl>
       {renderNavLink(navBarItems)}
-    </ul>
+    </StyledUl>
   )
 }
 
 export default Navbar
+
+const StyledLi = styled.li`
+  cursor: pointer;
+`
+const StyledUl = styled.ul`
+  list-style:none ;
+`
+
+const StyledH3 = styled.h3<ThemePropsType>`
+  color: ${p => p.color};
+`
