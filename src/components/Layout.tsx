@@ -1,14 +1,15 @@
-import React, { ReactNode } from 'react'
+import React, { FC, ReactNode } from 'react'
 import Header from './Header'
+import Footer from './Footer'
 
 const Layout = ({ children }: { children: ReactNode }): JSX.Element => {
 
   return (
     <>
       <div className="layout">
-        <div>LAYOUT</div>
         <Header />
         {children}
+        <Footer />
       </div>
     </>
   )
