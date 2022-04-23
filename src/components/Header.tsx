@@ -10,19 +10,15 @@ const Header = (): JSX.Element => {
 
   return (
     <div className="header_wrapper">
-      {(width && width > 768) && (
-        <>
-          <div className="logo_wrapper">
-            <Image
-              src="/assets/logo/logo.JPG"
-              // layout='fill'
-              width="200rem"
-              height="200rem"
-            />
-          </div>
-          < Navbar />
-        </>
-      )}
+      <div className="logo_wrapper">
+        <Image
+          src="/assets/logo/logo.png"
+          // layout='fill'
+          width="300rem"
+          height="300rem"
+        />
+      </div>
+      {(width && width > 768) && (< Navbar />)}
       <div>HEADER</div>
     </div>
   )
