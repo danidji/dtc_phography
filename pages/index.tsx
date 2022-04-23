@@ -11,8 +11,8 @@ const Home: NextPage = () => {
   return (
     <div >
       <Head>
-        <title>Accueil</title>
-        <meta name="description" content="Accueil - DTC photo" />
+        <title>Accueil - Lunysse photographe</title>
+        <meta name="description" content="Accueil - Lunysse photographe" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

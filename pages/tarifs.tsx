@@ -8,13 +8,13 @@ const Prices: NextPage = () => {
     <div >
       <Head>
         <title>Tarifs</title>
-        <meta name="description" content="Tarifs - DTC photo" />
+        <meta name="description" content="Tarifs - Lunysse photographe" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
 
       <h1 >
-        Voici mes prix
+        Tarifs
       </h1>
 
     </div>

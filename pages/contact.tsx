@@ -8,13 +8,13 @@ const Contact: NextPage = () => {
     <div >
       <Head>
         <title>Contact</title>
-        <meta name="description" content="Contact - DTC photo" />
+        <meta name="description" content="Contact - Lunysse photographe" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
 
       <h1 >
-        Me contacter
+        Contact
       </h1>
 
     </div>
