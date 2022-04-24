@@ -5,13 +5,17 @@ import styled from 'styled-components';
 
 import { ThemePropsType } from '../interfaces';
 import { useThemeContext } from '../state/theme.context';
-import useWindowDimensions from '../hooks/use-window-dimension'
+import useDetectMobileWindow from '../hooks/use-detect-mobile-window';
 
 
 interface NavbarItemsType {
   id: string,
   title: string
   href: string
+}
+
+interface NavbarPropsType {
+  isMobile: boolean | null
 }
 
 const navBarItems: NavbarItemsType[] = [
@@ -26,19 +30,22 @@ const navBarItems: NavbarItemsType[] = [
 
 const Navbar = (): JSX.Element => {
 
-  const { color } = useThemeContext();
-  const { width } = useWindowDimensions();
-  const router = useRouter();
+  const { color } = useThemeContext()
+  const router = useRouter()
+  const { isMobile } = useDetectMobileWindow()
 
-  console.log({ router })
+  const returnFontColor = (): string => {
+    return isMobile ? color.background : color.secondary
+  }
 
   const renderNavLink = (items: NavbarItemsType[]): JSX.Element[] => {
     return items.map((item: NavbarItemsType): JSX.Element => (
       <StyledLi key={item.id}>
         <Link href={item.href} passHref>
           <StyledH3
-            color={router.pathname === item.href ? color.primary : color.background}
+            color={router.pathname === item.href ? color.primary : returnFontColor()}
             isUnderline={router.pathname === item.href ? true : false}
+            isMobile={isMobile}
           >
             {item.title}
           </StyledH3>
@@ -48,7 +55,7 @@ const Navbar = (): JSX.Element => {
     ))
   }
   return (
-    <StyledUl>
+    <StyledUl isMobile={isMobile}>
       {renderNavLink(navBarItems)}
     </StyledUl>
   )
@@ -59,11 +66,18 @@ export default Navbar
 const StyledLi = styled.li`
   cursor: pointer;
 `
-const StyledUl = styled.ul`
+const StyledUl = styled.ul<NavbarPropsType>`
   list-style:none ;
+  display: flex ;
+  flex-direction: ${({ isMobile }) => isMobile ? "column" : "row"} ;
+  justify-content: ${({ isMobile }) => !isMobile ? "flex-end" : "center"};
+  flex: 2;
+  padding-inline-start: 0;
 `
 
-const StyledH3 = styled.h3<ThemePropsType>`
+const StyledH3 = styled.h3<ThemePropsType & NavbarPropsType>`
   color: ${p => p.color};
   text-decoration: ${({ isUnderline }) => isUnderline ? "underline" : "none"} ;
+  margin:0 1rem ;
+  font-size:${({ isMobile }) => isMobile ? "1.7rem" : "2rem"};
 `

@@ -14,14 +14,14 @@ const HambergerMenu = (): JSX.Element => {
   const [open, setOpen] = useState<boolean>(false)
   return (
     <DrawerWrapper className="drawer_wrapper" open={open} bgColor={color.secondary}>
-      <HambergerButton className="hamberger_button" bgColor={color.background} onClick={() => setOpen(!open)}>
+      <HambergerButton className="hamberger_button" onClick={() => setOpen(!open)}>
         <StyledSpan bgColor={color.primary} open={open} />
         <StyledSpan bgColor={color.primary} open={open} />
         <StyledSpan bgColor={color.primary} open={open} />
       </HambergerButton>
-      <div className="drawer_menu">
+      <DrawerMenu className="drawer_menu">
         <Navbar />
-      </div>
+      </DrawerMenu>
     </DrawerWrapper>
   )
 }
@@ -35,10 +35,10 @@ const DrawerWrapper = styled.div<ThemePropsType & DrawerPropsType>`
   height:100% ;
   transition: 400ms ease-out;
   background-color: ${p => p.bgColor};
-  transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(-100%)'};
+  transform: ${({ open }) => open ? 'translateX(-3rem)' : 'translateX(-13rem)'};
 `
 
-const HambergerButton = styled.button<ThemePropsType>`
+const HambergerButton = styled.button`
   display: flex;
   flex-direction:column;
   justify-content:center ;
@@ -51,7 +51,6 @@ const HambergerButton = styled.button<ThemePropsType>`
   padding: 0 ;
   border: none ;
   cursor: pointer;
-  /* background-color: ${p => p.bgColor}; */
   background-color: transparent;
 `
 
@@ -76,4 +75,11 @@ const StyledSpan = styled.span<ThemePropsType & DrawerPropsType>`
   :nth-child(3){
     transform: ${({ open }) => open ? 'rotate(-45deg)' : ''};
 }
+`
+
+const DrawerMenu = styled.div`
+  width: 100% ;
+  display: flex;
+  margin: 1rem 0;
+
 `

@@ -5,10 +5,10 @@ import styled from 'styled-components'
 
 import Navbar from './Navbar'
 import useWindowDimensions from '../hooks/use-window-dimension'
-
+import useDetectMobileWindow from '../hooks/use-detect-mobile-window'
 const Header = (): JSX.Element => {
   const { width } = useWindowDimensions();
-
+  const { isMobile } = useDetectMobileWindow()
 
   return (
     <HeaderWrapper className="header_wrapper">
@@ -23,17 +23,20 @@ const Header = (): JSX.Element => {
           </a>
         </Link>
       </LogoWrapper>
-      {(width && width > 768) && (< Navbar />)}
+      {!isMobile && (< Navbar />)}
     </HeaderWrapper>
   )
 }
 
 export default Header;
 
+const HeaderWrapper = styled.div`
+  display: flex;
+  justify-content: space-between ;
+  align-items: center ;
+`
 const LogoWrapper = styled.div`
   display: flex;
   justify-content: center ;
-`
-
-const HeaderWrapper = styled.div`
+  flex: 1
 `

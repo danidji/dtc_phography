@@ -5,15 +5,15 @@ import Header from './Header'
 import Footer from './Footer'
 import HambergerMenu from './HambergerMenu'
 
-import useWindowDimensions from '../hooks/use-window-dimension'
+import useDetectMobileWindow from '../hooks/use-detect-mobile-window'
 
 const Layout = ({ children }: { children: ReactNode }): JSX.Element => {
-  const { width } = useWindowDimensions()
+  const { isMobile } = useDetectMobileWindow()
 
   return (
     <LayoutWrapper className="layout_wrapper">
       <Header />
-      {(width && width < 768) && <HambergerMenu />}
+      {isMobile && <HambergerMenu />}
       {children}
       <Footer />
     </LayoutWrapper>
@@ -24,4 +24,5 @@ export default Layout
 
 const LayoutWrapper = styled.div`
   position: relative;
+  margin: 0 3rem ;
 `

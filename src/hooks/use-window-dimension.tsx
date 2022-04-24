@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"
 
 interface WindowDimensionsType {
     width: number | null,
@@ -9,7 +9,7 @@ const useWindowDimensions = (): WindowDimensionsType => {
     const [windowDimensions, setWindowDimensions] = useState<WindowDimensionsType>({
         width: null,
         height: null,
-    });
+    })
     useEffect(() => {
         const handleResize = (): void => {
             setWindowDimensions({
@@ -18,10 +18,10 @@ const useWindowDimensions = (): WindowDimensionsType => {
             });
         }
         handleResize();
-        window.addEventListener('resize', handleResize);
-        return (): void => window.removeEventListener('resize', handleResize);
-    }, []);
-    return windowDimensions;
-};
+        window.addEventListener('resize', handleResize)
+        return (): void => window.removeEventListener('resize', handleResize)
+    }, [])
+    return windowDimensions
+}
 
-export default useWindowDimensions;
+export default useWindowDimensions
