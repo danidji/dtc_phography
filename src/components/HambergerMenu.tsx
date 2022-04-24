@@ -15,9 +15,9 @@ const HambergerMenu = (): JSX.Element => {
   return (
     <DrawerWrapper className="drawer_wrapper" open={open} bgColor={color.secondary}>
       <HambergerButton className="hamberger_button" bgColor={color.background} onClick={() => setOpen(!open)}>
-        <StyledSpan bgColor={color.secondary} open={open} />
-        <StyledSpan bgColor={color.secondary} open={open} />
-        <StyledSpan bgColor={color.secondary} open={open} />
+        <StyledSpan bgColor={color.primary} open={open} />
+        <StyledSpan bgColor={color.primary} open={open} />
+        <StyledSpan bgColor={color.primary} open={open} />
       </HambergerButton>
       <div className="drawer_menu">
         <Navbar />
@@ -51,7 +51,8 @@ const HambergerButton = styled.button<ThemePropsType>`
   padding: 0 ;
   border: none ;
   cursor: pointer;
-  background-color: ${p => p.bgColor};
+  /* background-color: ${p => p.bgColor}; */
+  background-color: transparent;
 `
 
 const StyledSpan = styled.span<ThemePropsType & DrawerPropsType>`

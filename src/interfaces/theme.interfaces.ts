@@ -13,4 +13,5 @@ export interface ThemePropsType {
   bgColor?: string,
   color?: string,
   borderColor?: string,
+  isUnderline?: boolean
 }

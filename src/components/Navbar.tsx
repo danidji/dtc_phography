@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import styled from 'styled-components';
 
 import { ThemePropsType } from '../interfaces';
@@ -27,12 +28,21 @@ const Navbar = (): JSX.Element => {
 
   const { color } = useThemeContext();
   const { width } = useWindowDimensions();
+  const router = useRouter();
+
+  console.log({ router })
 
   const renderNavLink = (items: NavbarItemsType[]): JSX.Element[] => {
     return items.map((item: NavbarItemsType): JSX.Element => (
       <StyledLi key={item.id}>
         <Link href={item.href} passHref>
-          <StyledH3 color={color.background}>{item.title}</StyledH3>
+          <StyledH3
+            color={router.pathname === item.href ? color.primary : color.background}
+            isUnderline={router.pathname === item.href ? true : false}
+          >
+            {item.title}
+          </StyledH3>
+
         </Link>
       </StyledLi>
     ))
@@ -55,4 +65,5 @@ const StyledUl = styled.ul`
 
 const StyledH3 = styled.h3<ThemePropsType>`
   color: ${p => p.color};
+  text-decoration: ${({ isUnderline }) => isUnderline ? "underline" : "none"} ;
 `
