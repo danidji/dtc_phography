@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import { ThemePropsType } from '../interfaces';
 import { useThemeContext } from '../state/theme.context';
+import useWindowDimensions from '../hooks/use-window-dimension'
 
 
 interface NavbarItemsType {
@@ -25,11 +26,12 @@ const navBarItems: NavbarItemsType[] = [
 const Navbar = (): JSX.Element => {
 
   const { color } = useThemeContext();
+  const { width } = useWindowDimensions();
 
   const renderNavLink = (items: NavbarItemsType[]): JSX.Element[] => {
     return items.map((item: NavbarItemsType): JSX.Element => (
       <StyledLi key={item.id}>
-        <Link href={item.href}>
+        <Link href={item.href} passHref>
           <StyledH3 color={color.background}>{item.title}</StyledH3>
         </Link>
       </StyledLi>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import styled from 'styled-components'
@@ -14,11 +14,13 @@ const Header = (): JSX.Element => {
     <HeaderWrapper className="header_wrapper">
       <LogoWrapper className="logo_wrapper">
         <Link href="/">
-          <Image
-            src="/assets/logo/logo.png"
-            width="300rem"
-            height="300rem"
-          />
+          <a>
+            <Image
+              src="/assets/logo/logo.png"
+              width="300rem"
+              height="300rem"
+            />
+          </a>
         </Link>
       </LogoWrapper>
       {(width && width > 768) && (< Navbar />)}
@@ -34,5 +36,4 @@ const LogoWrapper = styled.div`
 `
 
 const HeaderWrapper = styled.div`
-  position: relative;
 `
