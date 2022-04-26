@@ -14,10 +14,6 @@ interface NavbarItemsType {
   href: string
 }
 
-interface NavbarPropsType {
-  isMobile: boolean | null
-}
-
 const navBarItems: NavbarItemsType[] = [
   { id: "home", title: "Accueil", href: "/" },
   { id: "portraits", title: "Portraits", href: "/portraits" },
@@ -66,7 +62,7 @@ export default Navbar
 const StyledLi = styled.li`
   cursor: pointer;
 `
-const StyledUl = styled.ul<NavbarPropsType>`
+const StyledUl = styled.ul<ThemePropsType>`
   list-style:none ;
   display: flex ;
   flex-direction: ${({ isMobile }) => isMobile ? "column" : "row"} ;
@@ -75,7 +71,7 @@ const StyledUl = styled.ul<NavbarPropsType>`
   padding-inline-start: 0;
 `
 
-const StyledH3 = styled.h3<ThemePropsType & NavbarPropsType>`
+const StyledH3 = styled.h3<ThemePropsType>`
   color: ${p => p.color};
   text-decoration: ${({ isUnderline }) => isUnderline ? "underline" : "none"} ;
   margin:0 1rem ;
