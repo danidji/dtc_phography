@@ -31,6 +31,7 @@ export default HambergerMenu
 const DrawerWrapper = styled.div<ThemePropsType & DrawerPropsType>`
   position: fixed;
   top: 0;
+  z-index:999 ;
   width: 10rem ;
   height:100% ;
   transition: 400ms ease-out;
