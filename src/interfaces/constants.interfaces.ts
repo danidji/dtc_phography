@@ -4,7 +4,18 @@ export interface NavbarItemsType {
   href: string
 }
 
-export interface CarouselItemtype {
+export interface CarouselItemType {
   id: number;
   path: string,
+}
+
+export interface PriceFormulaType {
+  subTitle: string,
+  paragraph: string[]
+}
+
+export interface PricesItemsType {
+  title: string,
+  pathImage: string
+  priceFormula: PriceFormulaType[]
 }
