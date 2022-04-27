@@ -3,21 +3,9 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import useEmblaCarousel from 'embla-carousel-react'
 import useDetectMobileWindow from '../hooks/use-detect-mobile-window';
-import { ThemePropsType } from '../interfaces/theme.interfaces';
+import { ThemePropsType, CarouselItemtype } from '../interfaces';
+import { carouselImages } from '../constants';
 
-
-interface CarouselItemtype {
-  id: number;
-  path: string,
-}
-
-const carouselImages: CarouselItemtype[] = [
-  { id: 1, path: "/assets/images/carrousel/lunysse_caroussel1.jpg", },
-  { id: 2, path: "/assets/images/carrousel/lunysse_caroussel2.jpg", },
-  { id: 3, path: "/assets/images/carrousel/lunysse_caroussel3.jpg", },
-  { id: 4, path: "/assets/images/carrousel/lunysse_caroussel4.jpg", },
-  { id: 5, path: "/assets/images/carrousel/lunysse_caroussel5.jpg", },
-]
 
 const Carousel = (): JSX.Element => {
   const [emblaRef, emblaApi] = useEmblaCarousel();
@@ -73,7 +61,6 @@ const EmblaContainer = styled.div<ThemePropsType>`
 `
 
 const EmblaSlide = styled.div<ThemePropsType>`
-  /* flex: ${({ isMobile }) => isMobile ? "0 0 100%" : "0 0 50%"}; */
   flex:0 0 100%;
   margin-right: 4rem ;
   `
@@ -82,8 +69,5 @@ const StyledImage = styled(Image)`
   object-fit:cover ;
   border-radius: 3rem ;
   z-index: 99 ;
-  /* position:absolute ;
-  top: 0 ;
-  left: 0 ; */
 
   `

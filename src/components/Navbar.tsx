@@ -1,30 +1,14 @@
-import React from 'react'
+import React, { FC } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import styled from 'styled-components';
 
-import { ThemePropsType } from '../interfaces';
+import { ThemePropsType, NavbarItemsType } from '../interfaces';
 import { useThemeContext } from '../state/theme.context';
 import useDetectMobileWindow from '../hooks/use-detect-mobile-window';
+import { navBarItems } from '../constants';
 
-
-interface NavbarItemsType {
-  id: string,
-  title: string
-  href: string
-}
-
-const navBarItems: NavbarItemsType[] = [
-  { id: "home", title: "Accueil", href: "/" },
-  { id: "portraits", title: "Portraits", href: "/portraits" },
-  { id: "couples", title: "Couples", href: "/couples" },
-  { id: "pregnancies", title: "Grossesses", href: "/grossesses" },
-  { id: "prices", title: "Tarifs", href: "/tarifs" },
-  { id: "contact", title: "Contact", href: "/contact" }
-]
-
-
-const Navbar = (): JSX.Element => {
+const Navbar: FC = (): JSX.Element => {
 
   const { color } = useThemeContext()
   const router = useRouter()
