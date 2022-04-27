@@ -54,7 +54,7 @@ const ContentWrapper = styled.div`
   /* width: 100rem ; */
   `
 
-const SeparatorLine = styled.div<ThemePropsType>`
+export const SeparatorLine = styled.div<ThemePropsType>`
   width: 50% ;
   height: 3px ;
   background-color: ${p => p.bgColor};

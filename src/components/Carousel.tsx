@@ -3,7 +3,7 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import useEmblaCarousel from 'embla-carousel-react'
 import useDetectMobileWindow from '../hooks/use-detect-mobile-window';
-import { ThemePropsType, CarouselItemtype } from '../interfaces';
+import { ThemePropsType, CarouselItemType } from '../interfaces';
 import { carouselImages } from '../constants';
 
 
@@ -20,7 +20,7 @@ const Carousel = (): JSX.Element => {
   }, [emblaApi])
 
   const renderCarouselImages = (): JSX.Element[] => {
-    return carouselImages.map((image: CarouselItemtype): JSX.Element => (
+    return carouselImages.map((image: CarouselItemType): JSX.Element => (
       <EmblaSlide
         key={image.id}
         style={{ width: "100%", height: "auto", position: "relative" }}
