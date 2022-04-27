@@ -8,12 +8,10 @@ import CircleImage from '../src/components/CircleImage'
 
 import { ThemePropsType } from '../src/interfaces'
 import { useThemeContext } from '../src/state/theme.context'
-import useDetectMobileWindow from '../src/hooks/use-detect-mobile-window'
 
 
 const Home: NextPage = () => {
   const { color } = useThemeContext()
-  const { isMobile } = useDetectMobileWindow()
 
   return (
     <>
@@ -25,8 +23,8 @@ const Home: NextPage = () => {
 
       <ContentWrapper className="content_wrapper">
         <Carousel />
-        <SeparatorLine className="separator_line" bgColor={color.primary}></SeparatorLine>
-        <PresentationWrapper className="presentation_wrapper" isMobile={isMobile}>
+        <SeparatorLine className="separator_line" bgColor={color.primary} ></SeparatorLine>
+        <PresentationWrapper className="presentation_wrapper" >
           <div className="presentation_image" style={{ position: "relative", width: "15rem", height: "20rem" }}>
             <StyledImage
               src={"/assets/images/presentation.jpg"}
@@ -39,7 +37,7 @@ const Home: NextPage = () => {
             <StyledP>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, obcaecati delectus animi repellendus provident voluptas sit, ad saepe doloribus, ab accusantium impedit eum. Sequi, voluptate at exercitationem vero in debitis sunt, numquam et voluptatibus iste maiores. Eum fuga ipsum, recusandae eveniet labore molestiae iusto ut repellat tempore neque consequatur officiis amet voluptas a veritatis sequi quibusdam ducimus quis officia magni assumenda? Nemo perspiciatis blanditiis minus odit aspernatur sapiente eligendi ea maiores, quos incidunt aut ullam veniam ut voluptas, id nostrum voluptatem ad voluptatum enim amet repudiandae natus? Fugiat ad aperiam consectetur laborum eveniet perferendis? Repellendus, in soluta! Incidunt, unde quam.</StyledP>
           </PresentationContent>
         </PresentationWrapper>
-        <SeparatorLine className="separator_line" bgColor={color.primary}></SeparatorLine>
+        <SeparatorLine className="separator_line" bgColor={color.primary} ></SeparatorLine>
         <CircleImage src={"/assets/images/circle_image1.jpg"} />
       </ContentWrapper>
 
@@ -57,19 +55,29 @@ const ContentWrapper = styled.div`
   `
 
 const SeparatorLine = styled.div<ThemePropsType>`
-  width: 10rem ;
+  width: 50% ;
   height: 3px ;
   background-color: ${p => p.bgColor};
   opacity: .5 ;
   margin: 6rem 0 ;
   border-radius: 1.5px ;
+  @media (min-width: 768px) {
+    width: 30%
+  }
 `
 
-const PresentationWrapper = styled.div<ThemePropsType>`
+const PresentationWrapper = styled.div`
   display: flex;
-  flex-direction: ${({ isMobile }) => isMobile ? "column" : "row"} ;
+  flex-direction: column ;
   align-items:center ;
-  width:${({ isMobile }) => isMobile ? "100%" : "60%"}  ;
+  width: 100%  ;
+  @media (min-width: 768px){
+    flex-direction: row ;
+    }
+  @media (min-width: 1060px){
+    width: 60% ;
+    }
+  
 `
 
 const StyledImage = styled(Image)`
