@@ -13,8 +13,6 @@ export const StyledButton = styled.button<ThemePropsType>`
   cursor: pointer;
   margin: 2rem 0;
   background-image: linear-gradient(110deg, #d39c2f 0%, #6a4e19 82%);
-  
-
 
 `
 
