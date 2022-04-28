@@ -1,12 +1,16 @@
+import React from 'react'
 import type { NextPage } from 'next'
+import { useRouter } from 'next/router'
 import Head from 'next/head'
 import styled from 'styled-components'
 import Image from 'next/image'
 
+import PriceCard from '../src/components/PriceCard'
 import { useThemeContext } from '../src/state/theme.context'
 import { SeparatorLine } from './index'
-import { PricesItemsType, PriceFormulaType } from '../src/interfaces'
+import { PricesItemsType } from '../src/interfaces'
 import { pricesItems } from '../src/constants'
+import { StyledButton, StyledP } from '../styles/StyledComponent';
 
 
 interface StyledPropsType {
@@ -15,40 +19,27 @@ interface StyledPropsType {
 
 const Prices: NextPage = () => {
   const { color } = useThemeContext()
-
-
-  const renderParagraph = (paragraph: string[]): JSX.Element[] => {
-    return paragraph.map((item: string, i: number): JSX.Element => (
-      <StyledP key={i}>{item}</StyledP>
-    ))
-  }
-
-  const renderPriceFormula = (formulas: PriceFormulaType[]): JSX.Element[] => {
-    return formulas.map((formula: PriceFormulaType, i: number): JSX.Element => (
-      <PriceFormulaInfos className="prices_formula_info" key={i}>
-        <StyledH3>{formula.subTitle}</StyledH3>
-        {renderParagraph(formula.paragraph)}
-      </PriceFormulaInfos>
-    ))
-  }
+  const router = useRouter()
 
   const renderPricesItem = (items: PricesItemsType[]): JSX.Element[] => {
     return items.map((item: PricesItemsType, i: number): JSX.Element => (
       <ContentPricesItems className="content_prices_item" key={i} num={i + 1}>
         <PricesImage className="prices_image" style={{ position: "relative", width: "100%", height: "100%" }}>
-          <Image src={item.pathImage} layout="fill" objectFit="cover" />
+          <Image src={item.pathImage} layout="fill" objectFit="cover" priority />
         </PricesImage>
-        <PricesInfos className="prices_infos">
-          <StyledH2>{item.title}</StyledH2>
-          {renderPriceFormula(item.priceFormula)}
-        </PricesInfos>
+        <PriceCard title={item.title} priceFormula={item.priceFormula} />
       </ContentPricesItems>
     ))
   }
 
+  const handleClick = (e: React.SyntheticEvent): void => {
+    e.preventDefault();
+    router.push('/contact')
+  }
+
 
   return (
-    < >
+    <>
       <Head>
         <title>Tarifs</title>
         <meta name="description" content="Tarifs - Lunysse photographe" />
@@ -56,7 +47,6 @@ const Prices: NextPage = () => {
       </Head>
 
       <PricesWrapper className="prices_wrapper">
-
         <h1> Tarifs </h1>
         <StyledSeparatorLine bgColor={color.primary} />
         <ContentPricesWrapper className="content_prices_wrapper">
@@ -66,6 +56,7 @@ const Prices: NextPage = () => {
                 src={"/assets/images/tarifs/presentation.jpg"}
                 layout="fill"
                 objectFit='cover'
+                priority
               />
             </PricesImage>
             <PricesInfos className="prices_infos">
@@ -76,6 +67,10 @@ const Prices: NextPage = () => {
             </PricesInfos>
           </ContentPricesItems>
           {renderPricesItem(pricesItems)}
+          <ContactWrapper className="contact_wrapper">
+            <StyledP>Pour plus d'informations ou pour commander un forfait : </StyledP>
+            <StyledButton onClick={handleClick} bgColor={color.primary}>Contactez moi</StyledButton>
+          </ContactWrapper>
         </ContentPricesWrapper>
       </PricesWrapper>
     </>
@@ -115,7 +110,6 @@ const ContentPricesItems = styled.div <StyledPropsType>`
 
 const PricesImage = styled.div`
   flex : 1;
-  /* height: 40rem; */
 `
 
 const PricesInfos = styled.div`
@@ -123,31 +117,12 @@ const PricesInfos = styled.div`
   display: flex;
   flex-direction:column ;
   align-items:center ;
-  /* padding:1rem ; */
-`
-const PriceFormulaInfos = styled.div` 
-  margin: .5rem 0 ;
 `
 
-const StyledH2 = styled.h2`
-  font-size: 2.5rem;
-  margin:.5rem 0;
-  text-align: center ;
-  `
-const StyledH3 = styled.h3`
-  font-size: 1.5rem;
-  margin:0;
-  text-align: center ;
-  font-family: "Nunito" ;
-  font-weight: 500 ;
-  `
-
-const StyledP = styled.p`
-  font-size: .7rem ;
-  text-align: center ;
-
-  @media (min-width: 768px) {
-    font-size: 1.2rem;
-  }
-
+const ContactWrapper = styled.div`
+  width: 100% ;
+  margin: 7rem 0 ;
+  display: flex;
+  flex-direction: column ;
+  align-items:center ;
 `
