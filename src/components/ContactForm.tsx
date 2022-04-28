@@ -54,7 +54,7 @@ const ContactForm: FC = (): JSX.Element => {
           <StyledInput
             type="text"
             placeholder="Objet"
-            {...register("object", {
+            {...register("subject", {
             })}
           />
         </InputWrapper>
