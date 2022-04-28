@@ -95,9 +95,12 @@ const StyledP = styled.p`
 const ContactFormWrapper = styled.div<ThemePropsType>`
 
   width:100% ;
-  height: 20rem ;
   background-color: ${p => p.bgColor};
   margin: 5rem 0 ;
-  border-radius:2rem ;
+  border-radius:1rem ;
+
+  @media (min-width: 1069px){
+    width: 80% ;
+  }
 
 `
