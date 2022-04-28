@@ -8,6 +8,7 @@ const themeState: ThemeContextType = {
     primary: "#D39C2F",
     secondary: "#FDFFFF",
     background: "#000000",
+    primaryOp50: "rgba(211, 156, 47,0.5)"
   }
 }
 
