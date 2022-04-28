@@ -121,7 +121,8 @@ const StyledInput = styled.input`
   border:none ;
   font-size: .9rem ;
   border-radius:.3rem ;
-  font-family:"Nunito", Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; ;
+  font-family:"Nunito", Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; 
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   
 `
 
@@ -150,6 +151,7 @@ const StyledTextArea = styled.textarea`
   font-size: .9rem ;
   border-radius:.3rem ;
   font-family:"Nunito", Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; 
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   @media (min-width: 1069px) {
     height: 16rem;
   }
@@ -166,6 +168,9 @@ const ButtonSubmit = styled.input<ThemePropsType>`
   border-radius: .3rem ;
   cursor: pointer;
   margin: 2rem 0 0 0;
+  background-image: linear-gradient(62deg, #d39c2f 0%, #F7CE68 100%);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
 `
 
 export const ErrorMsg = styled.div<ThemePropsType>`
