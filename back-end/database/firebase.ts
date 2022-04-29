@@ -14,9 +14,12 @@ const params = {
   clientC509CertUrl: serviceAccount.client_x509_cert_url,
 };
 
-firebase.initializeApp({
-  credential: firebase.credential.cert(params),
-  databaseURL: 'https://lunysse-photographe-default-rtdb.europe-west1.firebasedatabase.app/',
-});
+if (!firebase.apps.length) {
+
+  firebase.initializeApp({
+    credential: firebase.credential.cert(params),
+    databaseURL: 'https://lunysse-photographe-default-rtdb.europe-west1.firebasedatabase.app/',
+  });
+}
 
 export const database = firebase.database();
