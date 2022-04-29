@@ -44,30 +44,52 @@ const Carousel = (): JSX.Element => {
 export default Carousel
 
 const CarouselWrapper = styled.div<ThemePropsType>`
-  /* width: "100%"; */
+  width: 100%;
   margin-top:4rem;
   overflow: hidden ;
   display: flex;
   flex-direction: column;
   align-items:center ;
+  border-radius: 1rem ;
+
+  @media (min-width: 768px) {
+    width: 80% ;
+  }  
+  @media (min-width: 1060px) {
+    width: 70% ;
+  }  
+  @media (min-width: 1200px) {
+    width: 55% ;
+  }  
   
   `
 
 const EmblaContainer = styled.div<ThemePropsType>`
-  height: 40rem ;
-  width: ${({ isMobile }) => isMobile ? "100%" : "60rem"}; ;
+  height: 20rem ;
+  width: 100% ;
   display: flex;
   justify-content: flex-start ;
+  border-radius: 1rem ;
+  @media (min-width: 400px) {
+    height: 30rem ;
+  }  
+  @media (min-width: 1060px) {
+    height: 40rem ;
+  }  
+  @media (min-width: 1200px) {
+    height: 45rem ;
+  }  
 `
 
 const EmblaSlide = styled.div<ThemePropsType>`
   flex:0 0 100%;
   margin-right: 4rem ;
+  border-radius: 1rem ;
   `
 
 const StyledImage = styled(Image)`
   object-fit:cover ;
-  border-radius: 3rem ;
+  border-radius: 1rem ;
   z-index: 99 ;
 
   `
