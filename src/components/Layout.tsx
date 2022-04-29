@@ -1,5 +1,6 @@
 import React, { FC, ReactNode } from 'react'
 import styled from 'styled-components'
+import { Toaster } from 'react-hot-toast'
 
 import Header from './Header'
 import Footer from './Footer'
@@ -14,6 +15,7 @@ const Layout = ({ children }: { children: ReactNode }): JSX.Element => {
     <LayoutWrapper className="layout_wrapper">
       <Header />
       {isMobile && <HambergerMenu />}
+
       {children}
       <Footer />
     </LayoutWrapper>
