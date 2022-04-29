@@ -17,8 +17,10 @@ const Header = (): JSX.Element => {
           <a>
             <Image
               src="/assets/images/logo/logo.png"
-              width={isMobile ? "200rem" : "150rem"}
-              height={isMobile ? "200rem" : "150rem"}
+              // width={"200rem"}
+              // height={"200rem"}
+              width={isMobile ? "200rem" : "250rem"}
+              height={isMobile ? "200rem" : "250rem"}
             />
           </a>
         </Link>

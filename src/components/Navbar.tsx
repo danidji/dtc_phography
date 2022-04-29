@@ -59,5 +59,15 @@ const StyledH3 = styled.h3<ThemePropsType>`
   color: ${p => p.color};
   text-decoration: ${({ isUnderline }) => isUnderline ? "underline" : "none"} ;
   margin:0 1rem ;
-  font-size:${({ isMobile }) => isMobile ? "1.7rem" : "2rem"};
+  font-size: 1.7rem;
+
+  @media (min-width: 768px) {
+    font-size: 1.5rem ;
+    margin:0 .5rem ;
+  }
+  @media (min-width: 1060px) {
+    font-size: 1.7rem ;
+    margin:0 1rem ;
+  }
+
 `

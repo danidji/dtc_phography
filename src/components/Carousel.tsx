@@ -5,11 +5,13 @@ import useEmblaCarousel from 'embla-carousel-react'
 import useDetectMobileWindow from '../hooks/use-detect-mobile-window';
 import { ThemePropsType, CarouselItemType } from '../interfaces';
 import { carouselImages } from '../constants';
+import { useThemeContext } from '../state/theme.context';
 
 
 const Carousel = (): JSX.Element => {
   const [emblaRef, emblaApi] = useEmblaCarousel();
   const { isMobile } = useDetectMobileWindow();
+  const { color } = useThemeContext()
 
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev()
@@ -35,8 +37,8 @@ const Carousel = (): JSX.Element => {
       <EmblaContainer className="container" isMobile={isMobile}>
         {renderCarouselImages()}
       </EmblaContainer>
-      <button className="embla__prev" onClick={scrollPrev}>&#x3008;</button>
-      <button className="embla__next" onClick={scrollNext}>&#x27E9;</button>
+      <ButtonPrev className="embla__prev" onClick={scrollPrev} color={color.primary}>&lsaquo;</ButtonPrev>
+      <ButtonNext className="embla__next" onClick={scrollNext} color={color.primary}>&rsaquo;</ButtonNext>
     </CarouselWrapper>
   )
 }
@@ -45,12 +47,14 @@ export default Carousel
 
 const CarouselWrapper = styled.div<ThemePropsType>`
   width: 100%;
-  margin-top:4rem;
+  margin-top:1rem;
   overflow: hidden ;
   display: flex;
   flex-direction: column;
   align-items:center ;
   border-radius: 1rem ;
+  position: relative;
+  
 
   @media (min-width: 768px) {
     width: 80% ;
@@ -63,6 +67,30 @@ const CarouselWrapper = styled.div<ThemePropsType>`
   }  
   
   `
+const ButtonNav = styled.button<ThemePropsType>`
+  position: absolute;
+  top : 42%;
+  font-size: 6rem ;
+  padding:0 ;
+  border:none ;
+  outline: none;
+  background-color: transparent;
+  z-index: 999 ;
+  cursor: pointer;
+  opacity: .5;
+  color: ${p => p.color};
+  
+  @media (min-width: 400px) {
+    top: 38% ;
+  }  
+
+`
+const ButtonPrev = styled(ButtonNav)`
+  left: 1rem ;
+`
+const ButtonNext = styled(ButtonNav)`
+  right: 1rem ;
+`
 
 const EmblaContainer = styled.div<ThemePropsType>`
   height: 20rem ;
