@@ -16,6 +16,7 @@ export const carouselImages: CarouselItemType[] = [
   { id: 3, path: "/assets/images/carrousel/lunysse_caroussel3.jpg", },
   { id: 4, path: "/assets/images/carrousel/lunysse_caroussel4.jpg", },
   { id: 5, path: "/assets/images/carrousel/lunysse_caroussel5.jpg", },
+  { id: 6, path: "/assets/images/carrousel/lunysse_caroussel6.jpg", },
 ]
 
 export const pricesItems: PricesItemsType[] = [
