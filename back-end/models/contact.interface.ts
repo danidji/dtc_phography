@@ -13,7 +13,8 @@ export interface ErrorsContactType {
   email: string | null,
   name: string | null,
   message: string | null,
-  phone?: string | null
+  phone?: string | null,
+  database?: string | null
 }
 
 export interface MailDataType {

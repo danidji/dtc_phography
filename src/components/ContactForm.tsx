@@ -1,26 +1,47 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { useForm, SubmitHandler } from "react-hook-form"
 import validator from 'validator'
 import styled from 'styled-components'
+import toast from 'react-hot-toast'
 
-import { ContactFormType } from '../interfaces'
-import { ThemePropsType } from '../interfaces/theme.interfaces';
+import { ContactFormType, ThemePropsType } from '../interfaces'
+import { ErrorsContactType } from '../../back-end/models/contact.interface'
 import { useThemeContext } from '../state/theme.context';
+import { axiosSendMail } from '../repositories/contact.repo'
+import { AxiosError } from 'axios'
 
 
 const ContactForm: FC = (): JSX.Element => {
 
   const { color } = useThemeContext()
+  const [requestError, setRequestError] = useState<ErrorsContactType | null>(null)
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors }
   } = useForm<ContactFormType>();
 
-  const onSubmit: SubmitHandler<ContactFormType> = (data): void => {
-    console.log({ data })
+  const onSubmit: SubmitHandler<ContactFormType> = async (data): Promise<void> => {
+    try {
+      const responseData = await axiosSendMail(data)
+      reset()
+      toast.success(responseData)
+      setRequestError(null)
+
+    } catch (err: unknown) {
+
+      if (err instanceof AxiosError) {
+        console.log({ err: err.response?.data })
+        if (err.response) {
+          setRequestError(err.response.data)
+          if (err.response.status === 500) {
+            toast.error("Erreur serveur")
+          }
+        }
+      }
+    }
   }
-  console.log({ errors })
   return (
     <StyledForm onSubmit={handleSubmit(onSubmit)}>
       <FieldsWrapper className="fields_wrapper">
@@ -36,6 +57,7 @@ const ContactForm: FC = (): JSX.Element => {
             })}
           />
           {errors.name && <ErrorMsg className='error_msg'>Veuillez saisir un nom d'au moins 2 caractères</ErrorMsg>}
+          {requestError?.name && <ErrorMsg className='error_msg'>{requestError.name}</ErrorMsg>}
           <StyledInput
             type="text"
             placeholder="Email"
@@ -45,6 +67,7 @@ const ContactForm: FC = (): JSX.Element => {
             })}
           />
           {errors.email && <ErrorMsg className='error_msg'>Veuillez saisir un email valide</ErrorMsg>}
+          {requestError?.email && <ErrorMsg className='error_msg'>{requestError.email}</ErrorMsg>}
           <StyledInput
             type="text"
             placeholder="Téléphone (si vous souhaitez être rappelé)"
@@ -67,6 +90,7 @@ const ContactForm: FC = (): JSX.Element => {
             })}
           />
           {errors.message && <ErrorMsg className='error_msg'>Veuillez saisir un message</ErrorMsg>}
+          {requestError?.message && <ErrorMsg className='error_msg'>{requestError.message}</ErrorMsg>}
         </TextAreaWrapper>
       </FieldsWrapper>
       <ButtonSubmit

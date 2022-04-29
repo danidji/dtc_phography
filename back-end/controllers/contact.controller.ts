@@ -9,7 +9,9 @@ import { ContactMessageType, ErrorsContactType, MailDataType } from '../models/c
 export const processSendMail = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
 
   try {
-    const { name, email, phone, subject, message } = req.body.data
+    console.log({ req: req.body })
+    const { name, email, phone, subject, message } = req.body
+
 
     const errors: ErrorsContactType = {
       name: !name ? "Veuillez saisir un nom" : null,
@@ -21,7 +23,7 @@ export const processSendMail = async (req: NextApiRequest, res: NextApiResponse)
       if (validator.isEmail(email)) {
         if (phone && !validator.isMobilePhone(phone, "fr-FR")) {
           errors.phone = "Veuillez renseigner un numéro de téléphone valide";
-          res.status(500).json({ errors: errors });
+          res.status(400).json({ errors: errors });
         }
 
         const newMessage: ContactMessageType = {
@@ -51,17 +53,18 @@ export const processSendMail = async (req: NextApiRequest, res: NextApiResponse)
           await sendEmail(mailData)
           res.status(200).send("Mail envoyé avec succès")
         } else {
-          res.status(500).json({ error: "Message non sauvegardé en base" })
+          errors.database = "Message non sauvegardé en base"
+          res.status(500).json(errors)
 
         }
 
 
       } else {
         errors.email = "Veuillez saisir un email valide"
-        res.status(500).json(errors)
+        res.status(400).json(errors)
       }
     } else {
-      res.status(500).json(errors)
+      res.status(400).json(errors)
     }
 
   } catch (err) {
