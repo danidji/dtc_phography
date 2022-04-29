@@ -4,10 +4,8 @@ import Link from 'next/link'
 import styled from 'styled-components'
 
 import Navbar from './Navbar'
-import useWindowDimensions from '../hooks/use-window-dimension'
 import useDetectMobileWindow from '../hooks/use-detect-mobile-window'
 const Header = (): JSX.Element => {
-  const { width } = useWindowDimensions();
   const { isMobile } = useDetectMobileWindow()
 
   return (
@@ -17,8 +15,6 @@ const Header = (): JSX.Element => {
           <a>
             <Image
               src="/assets/images/logo/logo.png"
-              // width={"200rem"}
-              // height={"200rem"}
               width={isMobile ? "200rem" : "250rem"}
               height={isMobile ? "200rem" : "250rem"}
             />
