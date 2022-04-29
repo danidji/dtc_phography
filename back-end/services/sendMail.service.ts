@@ -1,6 +1,7 @@
 import nodemailer from "nodemailer"
+import { MailDataType } from "../models/contact.interface"
 
-const config = {
+export const mailConfig = {
   service: "Gmail",
   auth: {
     user: `${process.env.SMTP_USER}`,
@@ -8,13 +9,13 @@ const config = {
   }
 }
 
-const mailer = nodemailer.createTransport(config)
+const mailer = nodemailer.createTransport(mailConfig)
 
 export const sendEmail = async (
-  to: string,
-  subject: string,
-  html: string,
-  from: string = config.auth.user
+  { to,
+    subject,
+    text,
+    from }: MailDataType
 ) => {
-  await mailer.sendMail({ to, subject, html, from })
+  await mailer.sendMail({ to, subject, text, from })
 }

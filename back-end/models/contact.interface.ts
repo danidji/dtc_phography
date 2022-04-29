@@ -2,7 +2,7 @@ export interface ContactMessageType {
   id: string,
   email: string,
   name: string,
-  phone?: number,
+  phone?: number | undefined,
   date: string,
   subject: string,
   message: string,
@@ -14,4 +14,11 @@ export interface ErrorsContactType {
   name: string | null,
   message: string | null,
   phone?: string | null
+}
+
+export interface MailDataType {
+  from: string,
+  to: string,
+  subject: string,
+  text: string
 }
