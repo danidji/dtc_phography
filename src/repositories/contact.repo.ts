@@ -2,7 +2,7 @@ import axios from "axios";
 import { ContactFormType } from '../interfaces/contact.interfaces';
 
 
-const instance = axios.create({
+export const instance = axios.create({
   baseURL: "http://localhost:3000/api",
   headers: {
     "Accept": "*/*",
@@ -13,6 +13,6 @@ const instance = axios.create({
 
 
 export const axiosSendMail = async (object: ContactFormType) => {
-  const response = await instance.post("/contact", object);
+  const response = await instance.post("/contact", object)
   return response.data
 }
