@@ -23,8 +23,8 @@ const Navbar: FC = (): JSX.Element => {
       <StyledLi key={item.id}>
         <Link href={item.href} passHref>
           <StyledH3
-            color={router.pathname === item.href ? color.primary : returnFontColor()}
-            isUnderline={router.pathname === item.href ? true : false}
+            color={router.asPath === item.href ? color.primary : returnFontColor()}
+            isUnderline={router.asPath === item.href ? true : false}
             isMobile={isMobile}
           >
             {item.title}

@@ -2,9 +2,9 @@ import { NavbarItemsType, CarouselItemType, PricesItemsType } from "../interface
 
 export const navBarItems: NavbarItemsType[] = [
   { id: "home", title: "Accueil", href: "/" },
-  { id: "portraits", title: "Portraits", href: "/portraits" },
-  { id: "couples", title: "Couples", href: "/couples" },
-  { id: "pregnancies", title: "Grossesses", href: "/grossesses" },
+  { id: "portraits", title: "Portraits", href: "/galeries/portraits" },
+  { id: "couples", title: "Couples", href: "/galeries/couples" },
+  { id: "pregnancies", title: "Grossesses", href: "/galeries/grossesses" },
   { id: "prices", title: "Tarifs", href: "/tarifs" },
   { id: "contact", title: "Contact", href: "/contact" }
 ]
