@@ -6,30 +6,54 @@ import { PageContentType } from '../../back-end/models/pages.interface'
 import { axiosGetPageContent } from '../../src/repositories/pages.repo'
 import { ThemePropsType } from '../../src/interfaces/theme.interfaces';
 import { useThemeContext } from '../../src/state/theme.context';
+import { CgClose } from "react-icons/cg";
 
 interface GaleryProps {
   content: PageContentType | null
 }
 
-interface ImageProps {
-  src: string
+interface SingleImageProps {
+  src: string;
+  close: () => void
+}
+
+const SingleImage = ({ src, close }: SingleImageProps): JSX.Element => {
+  return (
+    <div className="modal_image_wrapper">
+      <button onClick={close}>
+        <CgClose />
+      </button>
+      <div className="image_wrapper" style={{ position: "relative", height: "100%", width: "100%" }}>
+        <Image
+          src={src}
+          layout="fill"
+          objectFit='cover'
+        />
+      </div>
+    </div>
+  )
 }
 
 const Galery = ({ content }: GaleryProps): JSX.Element => {
-  console.log({ content })
   const { color } = useThemeContext()
-  const [displayImage, setDisplayImage] = useState<ImageProps | null>(null)
+  const [displayImage, setDisplayImage] = useState<string | null>(null)
 
+  console.log({ displayImage })
   const renderImages = (images: string[] | undefined): JSX.Element[] | null => {
-    return images ? (images.map((image: string, i: number): JSX.Element => {
+    return images ? (images.map((imageSrc: string, i: number): JSX.Element => {
 
       return (
-        <ButtonImage key={i} className="images_button" bgColor={color.primaryOp50}>
+        <ButtonImage
+          key={i}
+          className="images_button"
+          bgColor={color.primaryOp50}
+          onClick={() => setDisplayImage(imageSrc)}
+        >
 
           <div className="image_wrapper" style={{ position: "relative", height: "100%", width: "100%" }}>
 
             <Image
-              src={image}
+              src={imageSrc}
               layout="fill"
               objectFit='cover'
             />
@@ -47,6 +71,12 @@ const Galery = ({ content }: GaleryProps): JSX.Element => {
       <GridWrapper className="grid_wrapper">
         {renderImages(content?.imagesUrl)}
       </GridWrapper>
+      {displayImage && (
+        <SingleImage
+          src={displayImage}
+          close={() => setDisplayImage(null)}
+        />
+      )}
     </GaleryWrapper>
   )
 }
@@ -84,8 +114,8 @@ const GaleryWrapper = styled.div`
 const GridWrapper = styled.div`
   display:grid ;
   width: 100% ;
-  grid-template-columns: 1fr 1fr 1fr ;
-  grid-template-rows: repeat(5, 6rem) ;
+  grid-template-columns: 1fr 1fr ;
+  grid-template-rows: repeat(10, 10rem) ;
   grid-gap: 1rem ;
 `
 
