@@ -68,7 +68,7 @@ const Prices: NextPage = () => {
           </ContentPricesItems>
           {renderPricesItem(pricesItems)}
           <ContactWrapper className="contact_wrapper">
-            <StyledP>Pour plus d'informations ou pour commander un forfait : </StyledP>
+            <StyledP>Pour plus d&lsquo;informations ou pour commander un forfait : </StyledP>
             <StyledButton onClick={handleClick} bgColor={color.primary}>Contactez moi</StyledButton>
           </ContactWrapper>
         </ContentPricesWrapper>

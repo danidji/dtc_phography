@@ -56,7 +56,7 @@ const ContactForm: FC = (): JSX.Element => {
               validate: (value: string): boolean => validator.isLength(value, { min: 2, max: 50 })
             })}
           />
-          {errors.name && <ErrorMsg className='error_msg'>Veuillez saisir un nom d'au moins 2 caractères</ErrorMsg>}
+          {errors.name && <ErrorMsg className='error_msg'>Veuillez saisir un nom d&lsquo;au moins 2 caractères</ErrorMsg>}
           {requestError?.name && <ErrorMsg className='error_msg'>{requestError.name}</ErrorMsg>}
           <StyledInput
             type="text"
