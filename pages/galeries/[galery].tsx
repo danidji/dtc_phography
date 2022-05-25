@@ -23,8 +23,6 @@ const Galery = ({ content }: GaleryProps): JSX.Element => {
   const router = useRouter()
   const [displayImage, setDisplayImage] = useState<string | null>(null)
 
-  console.log({ router })
-  console.log({ displayImage })
   const renderImages = (images: string[] | undefined): JSX.Element[] | null => {
     return images ? (images.map((imageSrc: string, i: number): JSX.Element => {
 
@@ -42,6 +40,7 @@ const Galery = ({ content }: GaleryProps): JSX.Element => {
               src={imageSrc}
               layout="fill"
               objectFit='cover'
+              priority
             />
           </div>
         </ButtonImage>
@@ -69,27 +68,28 @@ const Galery = ({ content }: GaleryProps): JSX.Element => {
 
 export default Galery
 
+export const getStaticPaths: GetStaticPaths = () => {
+  return {
+    paths: [
+      { params: { galery: "portraits" } },
+      { params: { galery: "couples" } },
+    ],
+    fallback: false
+  }
+}
+
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   let pageContent: PageContentType | null = null
   if (typeof params?.galery === "string") {
     pageContent = await axiosGetPageContent(params.galery)
-    return {
-      props: { content: pageContent }
-    }
   }
 
   return {
-    props: {}
-  }
-
-}
-
-export const getStaticPaths: GetStaticPaths = () => {
-  return {
-    paths: [{ params: { galery: "portraits" } }, { params: { galery: "couples" } },],
-    fallback: false
+    props: { content: pageContent ?? null }
   }
 }
+
+
 
 const GaleryWrapper = styled.div`
   display: flex;
