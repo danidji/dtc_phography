@@ -53,7 +53,7 @@ const Galery = ({ content }: GaleryProps): JSX.Element => {
     <GaleryWrapper className="galery_wrapper">
 
       <h1 className="galery_wrapper">{content?.title} en intérieur ou extérieur</h1>
-      <GridWrapper className="grid_wrapper" isGaleryCouple={router.asPath === "/galeries/couples" ? true : false}>
+      <GridWrapper className="grid_wrapper" isGaleryCouple={router.asPath === "/galeries/couples-grossesses" ? true : false}>
         {renderImages(content?.imagesUrl)}
       </GridWrapper>
       {displayImage && (
@@ -117,7 +117,7 @@ const GridWrapper = styled.div<GridProps>`
     grid-template-columns: 1fr 1fr 1fr ;
     grid-template-rows: repeat(${p => p.isGaleryCouple ? 3 : 7}, 22rem) ;
   }
-  @media (min-width: 1000px) {
+  @media (min-width: 1200px) {
     padding:0 10rem ;
     grid-template-rows: repeat(${p => p.isGaleryCouple ? 3 : 7}, 27rem) ;
   }
