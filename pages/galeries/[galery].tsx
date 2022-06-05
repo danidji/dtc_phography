@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { GetStaticPaths, GetStaticProps } from 'next'
+import { GetStaticPaths, GetStaticProps, GetServerSideProps } from 'next'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import styled from 'styled-components'
@@ -68,24 +68,29 @@ const Galery = ({ content }: GaleryProps): JSX.Element => {
 
 export default Galery
 
-export const getStaticPaths: GetStaticPaths = () => {
-  return {
-    paths: [
-      { params: { galery: "portraits" } },
-      { params: { galery: "couples" } },
-    ],
-    fallback: false
-  }
-}
+// export const getStaticPaths: GetStaticPaths = () => {
+//   return {
+//     paths: [
+//       { params: { galery: "portraits" } },
+//       { params: { galery: "couples" } },
+//     ],
+//     fallback: true
+//   }
+// }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   let pageContent: PageContentType | null = null
   if (typeof params?.galery === "string") {
     pageContent = await axiosGetPageContent(params.galery)
   }
 
+  // const res = await fetch(`http://localhost:3000/api/pages/?id=${params?.galery}`)
+  // const pages = await res.json()
+
+  // console.log({ pages })
   return {
     props: { content: pageContent ?? null }
+    // props: { content: pages }
   }
 }
 
@@ -115,6 +120,10 @@ const GridWrapper = styled.div<GridProps>`
   @media (min-width: 1000px) {
     padding:0 10rem ;
     grid-template-rows: repeat(${p => p.isGaleryCouple ? 3 : 7}, 27rem) ;
+  }
+  @media (min-width: 1200px) {
+    padding:0 5rem ;
+    grid-template-rows: repeat(${p => p.isGaleryCouple ? 3 : 7}, 33rem) ;
   }
 `
 
