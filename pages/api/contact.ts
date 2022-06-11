@@ -1,13 +1,17 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-
+import Cors from 'cors'
 import { processSendMail } from '../../back-end/controllers/contact.controller';
+import initMiddleware from '../../back-end/services/init.middleware';
 
-export default function handler(
+const cors = initMiddleware(Cors({ methods: ['POST'] }))
+
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
 
   if (req.method === "POST") {
-    processSendMail(req, res)
+    await cors(req, res)
+    await processSendMail(req, res)
   }
 }
