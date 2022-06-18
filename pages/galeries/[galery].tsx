@@ -40,6 +40,7 @@ const Galery = ({ content }: GaleryProps): JSX.Element => {
               src={imageSrc}
               layout="fill"
               objectFit='cover'
+              alt={`photo ${content?.title}`}
               priority
             />
           </div>
