@@ -2,14 +2,13 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import validator from 'validator'
 
 import { createNewMessage } from '../repositories/contact.repository'
-import { sendEmail, mailConfig } from '../services/sendMail.service'
+import { sendEmail, mailConfig } from '../services/send-mail.service'
 import { generateUId } from '../services/functions'
 import { ContactMessageType, ErrorsContactType, MailDataType } from '../models/contact.interface'
 
 export const processSendMail = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
 
   try {
-    console.log({ req: req.body })
     const { name, email, phone, subject, message } = req.body
 
 
@@ -42,7 +41,7 @@ export const processSendMail = async (req: NextApiRequest, res: NextApiResponse)
         const createdMessage = await createNewMessage(newMessage)
 
         if (createdMessage) {
-          console.log({ createdMessage })
+
           const mailData: MailDataType = {
             from: createdMessage.email,
             to: mailConfig.auth.user,
