@@ -69,29 +69,14 @@ const Galery = ({ content }: GaleryProps): JSX.Element => {
 
 export default Galery
 
-// export const getStaticPaths: GetStaticPaths = () => {
-//   return {
-//     paths: [
-//       { params: { galery: "portraits" } },
-//       { params: { galery: "couples" } },
-//     ],
-//     fallback: true
-//   }
-// }
-
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   let pageContent: PageContentType | null = null
   if (typeof params?.galery === "string") {
     pageContent = await axiosGetPageContent(params.galery)
   }
 
-  // const res = await fetch(`http://localhost:3000/api/pages/?id=${params?.galery}`)
-  // const pages = await res.json()
-
-  // console.log({ pages })
   return {
     props: { content: pageContent ?? null }
-    // props: { content: pages }
   }
 }
 
