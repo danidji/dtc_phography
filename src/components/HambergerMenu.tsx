@@ -9,18 +9,23 @@ interface DrawerPropsType {
   open: boolean
 }
 
-const HambergerMenu = (): JSX.Element => {
+interface PropsType {
+  openDrawer: () => void,
+  open: boolean
+}
+
+const HambergerMenu = ({ openDrawer, open }: PropsType): JSX.Element => {
   const { color } = useThemeContext();
-  const [open, setOpen] = useState<boolean>(false)
+
   return (
     <DrawerWrapper className="drawer_wrapper" open={open} bgColor={color.secondary}>
-      <HambergerButton className="hamberger_button" onClick={() => setOpen(!open)}>
+      <HambergerButton className="hamberger_button" onClick={openDrawer}>
         <StyledSpan bgColor={color.primary} open={open} />
         <StyledSpan bgColor={color.primary} open={open} />
         <StyledSpan bgColor={color.primary} open={open} />
       </HambergerButton>
       <DrawerMenu className="drawer_menu">
-        <Navbar />
+        <Navbar openDrawer={openDrawer} />
       </DrawerMenu>
     </DrawerWrapper>
   )
@@ -46,7 +51,7 @@ const HambergerButton = styled.button`
   align-items: center;
   position:absolute ;
   top: 1rem ;
-  left: 10.5rem ;
+  left: 13.5rem ;
   height: 2rem ;
   width: 2rem ;
   padding: 0 ;
@@ -64,7 +69,6 @@ const StyledSpan = styled.span<ThemePropsType & DrawerPropsType>`
   transition: 400ms ease;
   background-color: ${p => p.bgColor};
   transform-origin: .2rem;
-  /* position:${({ open }) => open ? 'absolute' : 'relative'} ; */
   position: relative;
 
   :first-child {

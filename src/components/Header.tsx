@@ -17,6 +17,7 @@ const Header = (): JSX.Element => {
               src="/assets/images/logo/logo.png"
               width={isMobile ? "200rem" : "250rem"}
               height={isMobile ? "200rem" : "250rem"}
+              alt="logo lunysse photographe"
             />
           </a>
         </Link>

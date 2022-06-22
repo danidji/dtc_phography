@@ -8,7 +8,11 @@ import { useThemeContext } from '../state/theme.context';
 import useDetectMobileWindow from '../hooks/use-detect-mobile-window';
 import { navBarItems } from '../constants';
 
-const Navbar: FC = (): JSX.Element => {
+interface PropsType {
+  openDrawer?: () => void
+}
+
+const Navbar = ({ openDrawer }: PropsType): JSX.Element => {
 
   const { color } = useThemeContext()
   const router = useRouter()
@@ -20,16 +24,18 @@ const Navbar: FC = (): JSX.Element => {
 
   const renderNavLink = (items: NavbarItemsType[]): JSX.Element[] => {
     return items.map((item: NavbarItemsType): JSX.Element => (
-      <StyledLi key={item.id}>
+      <StyledLi key={item.id} >
         <Link href={item.href} passHref>
-          <StyledH3
-            color={router.asPath === item.href ? color.primary : returnFontColor()}
-            isUnderline={router.asPath === item.href ? true : false}
-            isMobile={isMobile}
-          >
-            {item.title}
-          </StyledH3>
-
+          <a onClick={() => { if (openDrawer) openDrawer() }}>
+            <StyledH3
+              color={router.asPath === item.href ? color.primary : returnFontColor()}
+              isUnderline={router.asPath === item.href ? true : false}
+              isMobile={isMobile}
+              onClick={() => { if (openDrawer) openDrawer() }}
+            >
+              {item.title}
+            </StyledH3>
+          </a>
         </Link>
       </StyledLi>
     ))
