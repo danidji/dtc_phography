@@ -31,12 +31,12 @@ export default HambergerMenu
 const DrawerWrapper = styled.div<ThemePropsType & DrawerPropsType>`
   position: fixed;
   top: 0;
-  z-index:999 ;
-  width: 10rem ;
+  z-index:9999 ;
+  width: 13rem ;
   height:100% ;
   transition: 400ms ease-out;
   background-color: ${p => p.bgColor};
-  transform: ${({ open }) => open ? 'translateX(-3rem)' : 'translateX(-13rem)'};
+  transform: ${({ open }) => open ? 'translateX(-3rem)' : 'translateX(-16rem)'};
 `
 
 const HambergerButton = styled.button`

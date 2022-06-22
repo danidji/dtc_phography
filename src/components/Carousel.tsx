@@ -63,7 +63,7 @@ const CarouselWrapper = styled.div<ThemePropsType>`
     width: 70% ;
   }  
   @media (min-width: 1200px) {
-    width: 55% ;
+    width: 80% ;
   }  
   
   `
