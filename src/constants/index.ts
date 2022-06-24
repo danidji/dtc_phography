@@ -19,6 +19,24 @@ export const carouselImages: CarouselItemType[] = [
   { id: 6, path: "/assets/images/carrousel/lunysse_caroussel6.jpg", },
 ]
 
+export const carouselTestimony: CarouselItemType[] = [
+  {
+    id: 1,
+    path: "/assets/images/temoignages/temoignage-1.jpg",
+    text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure autem consequatur quisquam incidunt sit unde."
+  },
+  {
+    id: 2,
+    path: "/assets/images/temoignages/temoignage-2.jpg",
+    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, tempora?"
+  },
+  {
+    id: 3,
+    path: "/assets/images/temoignages/temoignage-3.jpg",
+    text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam itaque ea iure expedita?"
+  },
+]
+
 export const pricesItems: PricesItemsType[] = [
   {
     title: "Formule Portrait Studio solo",

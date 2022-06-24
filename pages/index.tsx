@@ -8,6 +8,7 @@ import CircleImage from '../src/components/CircleImage'
 
 import { ThemePropsType } from '../src/interfaces'
 import { useThemeContext } from '../src/state/theme.context'
+import { CarouselType } from '../src/components/Carousel'
 
 
 const Home: NextPage = () => {
@@ -22,7 +23,7 @@ const Home: NextPage = () => {
       </Head>
 
       <ContentWrapper className="content_wrapper">
-        <Carousel />
+        <Carousel type={CarouselType.IMAGE} />
         <SeparatorLine className="separator_line" bgColor={color.primary} ></SeparatorLine>
         <PresentationWrapper className="presentation_wrapper" >
           <div className="presentation_image" style={{ position: "relative", width: "15rem", height: "20rem" }}>
@@ -38,6 +39,7 @@ const Home: NextPage = () => {
           </PresentationContent>
         </PresentationWrapper>
         <SeparatorLine className="separator_line" bgColor={color.primary} ></SeparatorLine>
+        <Carousel type={CarouselType.TESTIMONY} />
         <CircleImage src={"/assets/images/circle_image1.jpg"} />
       </ContentWrapper>
 
