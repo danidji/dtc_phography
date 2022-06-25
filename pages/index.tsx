@@ -39,7 +39,10 @@ const Home: NextPage = () => {
           </PresentationContent>
         </PresentationWrapper>
         <SeparatorLine className="separator_line" bgColor={color.primary} ></SeparatorLine>
-        <Carousel type={CarouselType.TESTIMONY} />
+        <TestimonyContent className="testimony_content">
+          <h1>Témoignages</h1>
+          <Carousel type={CarouselType.TESTIMONY} />
+        </TestimonyContent>
         <CircleImage src={"/assets/images/circle_image1.jpg"} />
       </ContentWrapper>
 
@@ -53,8 +56,7 @@ const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column ;
   align-items: center ;
-  /* width: 100rem ; */
-  `
+`
 
 export const SeparatorLine = styled.div<ThemePropsType>`
   width: 50% ;
@@ -98,4 +100,11 @@ const StyledH2 = styled.h2`
 
 const StyledP = styled.p`
   text-align: justify;
+`
+
+const TestimonyContent = styled.div`
+  margin: 2rem 0 7rem 0 ;
+  display: flex;
+  flex-direction: column ;
+  align-items: center ;
 `
