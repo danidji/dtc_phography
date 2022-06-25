@@ -8,6 +8,7 @@ import CircleImage from '../src/components/CircleImage'
 
 import { ThemePropsType } from '../src/interfaces'
 import { useThemeContext } from '../src/state/theme.context'
+import { CarouselType } from '../src/components/Carousel'
 
 
 const Home: NextPage = () => {
@@ -22,7 +23,7 @@ const Home: NextPage = () => {
       </Head>
 
       <ContentWrapper className="content_wrapper">
-        <Carousel />
+        <Carousel type={CarouselType.IMAGE} />
         <SeparatorLine className="separator_line" bgColor={color.primary} ></SeparatorLine>
         <PresentationWrapper className="presentation_wrapper" >
           <div className="presentation_image" style={{ position: "relative", width: "15rem", height: "20rem" }}>
@@ -38,6 +39,10 @@ const Home: NextPage = () => {
           </PresentationContent>
         </PresentationWrapper>
         <SeparatorLine className="separator_line" bgColor={color.primary} ></SeparatorLine>
+        <TestimonyContent className="testimony_content">
+          <h1>Témoignages</h1>
+          <Carousel type={CarouselType.TESTIMONY} />
+        </TestimonyContent>
         <CircleImage src={"/assets/images/circle_image1.jpg"} />
       </ContentWrapper>
 
@@ -51,8 +56,7 @@ const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column ;
   align-items: center ;
-  /* width: 100rem ; */
-  `
+`
 
 export const SeparatorLine = styled.div<ThemePropsType>`
   width: 50% ;
@@ -96,4 +100,11 @@ const StyledH2 = styled.h2`
 
 const StyledP = styled.p`
   text-align: justify;
+`
+
+const TestimonyContent = styled.div`
+  margin: 2rem 0 7rem 0 ;
+  display: flex;
+  flex-direction: column ;
+  align-items: center ;
 `

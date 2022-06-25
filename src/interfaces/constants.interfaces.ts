@@ -7,6 +7,7 @@ export interface NavbarItemsType {
 export interface CarouselItemType {
   id: number;
   path: string,
+  text?: string,
 }
 
 export interface PriceFormulaType {
