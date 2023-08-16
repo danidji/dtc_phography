@@ -1,28 +1,28 @@
-import { useState, useEffect } from "react";
+import {useState, useEffect} from "react";
 
 interface DetectMobileWindowType {
-  isMobile: boolean | null
+    isMobile: boolean | null;
 }
 
 const useDetectMobileWindow = (): DetectMobileWindowType => {
-  const [isMobileWindow, setIsMobileWindow] = useState<DetectMobileWindowType>({
-    isMobile: null
-  })
+    const [isMobileWindow, setIsMobileWindow] = useState<DetectMobileWindowType>({
+        isMobile: null,
+    });
 
-  useEffect(() => {
-    const detectSize = (): void => {
-      if (window.innerWidth < 768) {
-        setIsMobileWindow({ isMobile: true });
-      } else {
-        setIsMobileWindow({ isMobile: false })
-      }
-    }
-    detectSize();
-    window.addEventListener('resize', detectSize)
-    return (): void => window.removeEventListener('resize', detectSize)
-  }, [])
+    useEffect(() => {
+        const detectSize = (): void => {
+            if (window.innerWidth < 768) {
+                setIsMobileWindow({isMobile: true});
+            } else {
+                setIsMobileWindow({isMobile: false});
+            }
+        };
+        detectSize();
+        window.addEventListener("resize", detectSize);
+        return (): void => window.removeEventListener("resize", detectSize);
+    }, []);
 
-  return isMobileWindow
-}
+    return isMobileWindow;
+};
 
-export default useDetectMobileWindow
+export default useDetectMobileWindow;
