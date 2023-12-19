@@ -24,7 +24,7 @@ const Galery = ({content}: GaleryProps): JSX.Element => {
 
     return (
         <GaleryWrapper className="galery_wrapper">
-            <h1 className="galery_wrapper">{content?.title} en intérieur ou extérieur</h1>
+            <h1 className="galery_wrapper">{content?.title}</h1>
             <GridWrapper className="grid_wrapper" isGaleryCouple={router.asPath === "/galeries/couples-grossesses" ? true : false}>
                 {content?.imagesUrl ? (
                     content.imagesUrl.map((imageSrc: string, i: number): JSX.Element => {

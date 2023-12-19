@@ -7,7 +7,7 @@ export const navBarItems: NavbarType[] = [
         title: "Particuliers",
         href: "/galeries/particuliers",
         subCategories: [
-            {id: "couples", title: "Couples/Famille", href: "/galeries/couples-famille"},
+            {id: "couples", title: "Couples/Familles", href: "/galeries/couples-familles"},
             {id: "artist", title: "Artistique", href: "/galeries/artistique"},
             {id: "portraits", title: "Portraits", href: "/galeries/portraits"},
         ],
