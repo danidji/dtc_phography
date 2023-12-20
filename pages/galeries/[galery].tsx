@@ -22,9 +22,10 @@ const Galery = ({content}: GaleryProps): JSX.Element => {
     const router = useRouter();
     const [displayImage, setDisplayImage] = useState<string | null>(null);
 
+    console.log(content?.imagesUrl.length);
     return (
         <GaleryWrapper className="galery_wrapper">
-            <h1 className="galery_wrapper">{content?.title}</h1>
+            <StyledH1 className="galery_wrapper">{content?.title}</StyledH1>
             <GridWrapper className="grid_wrapper" isGaleryCouple={router.asPath === "/galeries/couples-grossesses" ? true : false}>
                 {content?.imagesUrl ? (
                     content.imagesUrl.map((imageSrc: string, i: number): JSX.Element => {
@@ -64,30 +65,18 @@ const GaleryWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     position: relative;
+    padding: 0 3rem;
+
+    @media (max-width: 850px) {
+        padding: 0 1rem;
+    }
 `;
 
 const GridWrapper = styled.div<GridProps>`
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     width: 100%;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(${(p) => (p.isGaleryCouple ? 4 : 10)}, 10rem);
-    grid-gap: 1rem;
-
-    @media (min-width: 370px) {
-        grid-template-rows: repeat(${(p) => (p.isGaleryCouple ? 4 : 10)}, 17rem);
-    }
-    @media (min-width: 760px) {
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: repeat(${(p) => (p.isGaleryCouple ? 3 : 7)}, 22rem);
-    }
-    @media (min-width: 1200px) {
-        padding: 0 10rem;
-        grid-template-rows: repeat(${(p) => (p.isGaleryCouple ? 3 : 7)}, 27rem);
-    }
-    @media (min-width: 1200px) {
-        padding: 0 5rem;
-        grid-template-rows: repeat(${(p) => (p.isGaleryCouple ? 3 : 7)}, 33rem);
-    }
 `;
 
 const ButtonImage = styled.button<ThemePropsType>`
@@ -98,4 +87,18 @@ const ButtonImage = styled.button<ThemePropsType>`
     padding: 0.2rem;
     border-radius: 0.2rem;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    width: 9rem;
+    height: 20rem;
+
+    @media (max-width: 850px) {
+        width: 8rem;
+        height: 15rem;
+    }
+`;
+
+const StyledH1 = styled.h1<ThemePropsType>`
+    @media (max-width: 850px) {
+        font-size: 1.5rem;
+        margin: 3rem 0;
+    }
 `;

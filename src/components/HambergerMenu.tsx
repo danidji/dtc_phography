@@ -37,11 +37,11 @@ const DrawerWrapper = styled.div<ThemePropsType & DrawerPropsType>`
     position: fixed;
     top: 0;
     z-index: 9999;
-    width: 13rem;
+    width: 12rem;
     height: 100%;
     transition: 400ms ease-out;
     background-color: ${(p) => p.bgColor};
-    transform: ${({open}) => (open ? "translateX(-3rem)" : "translateX(-16rem)")};
+    transform: ${({open}) => (open ? "translateX(-0rem)" : "translateX(-12rem)")};
 `;
 
 const HambergerButton = styled.button`
@@ -51,7 +51,7 @@ const HambergerButton = styled.button`
     align-items: center;
     position: absolute;
     top: 1rem;
-    left: 13.5rem;
+    left: 12.5rem;
     height: 2rem;
     width: 2rem;
     padding: 0;

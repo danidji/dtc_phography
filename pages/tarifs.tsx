@@ -25,7 +25,7 @@ const Prices: NextPage = () => {
             (item: PricesItemsType, i: number): JSX.Element => (
                 <ContentPricesItems className="content_prices_item" key={i} num={i + 1}>
                     <PricesImage className="prices_image" style={{position: "relative", width: "100%", height: "100%"}}>
-                        <Image src={item.pathImage} layout="fill" objectFit="cover" priority />
+                        <Image src={item.pathImage} layout="fill" objectFit="cover" priority alt="tarifs images" />
                     </PricesImage>
                     <PriceCard title={item.title} priceFormula={item.priceFormula} />
                 </ContentPricesItems>
@@ -52,7 +52,7 @@ const Prices: NextPage = () => {
                 <ContentPricesWrapper className="content_prices_wrapper">
                     <ContentPricesItems className="content_prices_item" num={0}>
                         <PricesImage className="prices_image" style={{position: "relative", width: "100%", height: "100%"}}>
-                            <Image src={"/assets/images/tarifs/presentation.jpg"} layout="fill" objectFit="cover" priority />
+                            <Image src={"/assets/images/tarifs/presentation.jpg"} layout="fill" objectFit="cover" priority alt="tarifs images" />
                         </PricesImage>
                         <PricesInfos className="prices_infos">
                             <StyledP>

@@ -41,6 +41,7 @@ const Navbar = ({openDrawer}: PropsType): JSX.Element => {
                                                 <a
                                                     onClick={() => {
                                                         if (openDrawer) openDrawer();
+                                                        setOpenSubCategories(false);
                                                     }}
                                                 >
                                                     <StyledH4 color={color.primary} isMobile={isMobile}>
