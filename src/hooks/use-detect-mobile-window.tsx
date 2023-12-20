@@ -11,7 +11,7 @@ const useDetectMobileWindow = (): DetectMobileWindowType => {
 
     useEffect(() => {
         const detectSize = (): void => {
-            if (window.innerWidth < 768) {
+            if (window.innerWidth < 850) {
                 setIsMobileWindow({isMobile: true});
             } else {
                 setIsMobileWindow({isMobile: false});

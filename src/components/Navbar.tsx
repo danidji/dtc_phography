@@ -29,15 +29,11 @@ const Navbar = ({openDrawer}: PropsType): JSX.Element => {
                     <StyledLi key={item.id}>
                         {item.subCategories ? (
                             <>
-                                <button onClick={() => setOpenSubCategories(!openSubCategories)}>
-                                    <StyledH3
-                                        color={router.asPath === item.href ? color.primary : returnFontColor()}
-                                        isUnderline={router.asPath === item.href ? true : false}
-                                        isMobile={isMobile}
-                                    >
+                                <NavButton onClick={() => setOpenSubCategories(!openSubCategories)}>
+                                    <StyledH3 isMobile={isMobile} color={color.primary}>
                                         {item.title}
                                     </StyledH3>
-                                </button>
+                                </NavButton>
                                 {openSubCategories && (
                                     <div>
                                         {item.subCategories.map((subItem: NavbarType) => (
@@ -47,11 +43,7 @@ const Navbar = ({openDrawer}: PropsType): JSX.Element => {
                                                         if (openDrawer) openDrawer();
                                                     }}
                                                 >
-                                                    <StyledH4
-                                                        color={router.asPath === subItem.href ? color.primary : returnFontColor()}
-                                                        isUnderline={router.asPath === subItem.href ? true : false}
-                                                        isMobile={isMobile}
-                                                    >
+                                                    <StyledH4 color={color.primary} isMobile={isMobile}>
                                                         {subItem.title}
                                                     </StyledH4>
                                                 </a>
@@ -68,12 +60,11 @@ const Navbar = ({openDrawer}: PropsType): JSX.Element => {
                                     }}
                                 >
                                     <StyledH3
-                                        color={router.asPath === item.href ? color.primary : returnFontColor()}
-                                        isUnderline={router.asPath === item.href ? true : false}
                                         isMobile={isMobile}
                                         onClick={() => {
                                             if (openDrawer) openDrawer();
                                         }}
+                                        color={color.primary}
                                     >
                                         {item.title}
                                     </StyledH3>
@@ -91,6 +82,9 @@ export default Navbar;
 
 const StyledLi = styled.li`
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 `;
 const StyledUl = styled.ul<ThemePropsType>`
     list-style: none;
@@ -99,39 +93,65 @@ const StyledUl = styled.ul<ThemePropsType>`
     justify-content: center;
     flex: 1;
     padding-inline-start: 0;
-    margin: 4rem 0;
+    height: 5rem;
+    margin: 6rem 0 2rem 0;
+    gap: 2rem;
+
+    @media (max-width: 850px) {
+        justify-content: flex-start;
+        height: 100%;
+        margin: 0;
+        gap: 1rem;
+    }
 `;
 
 const StyledH3 = styled.h3<ThemePropsType>`
-    color: ${(p) => p.color};
-    text-decoration: ${({isUnderline}) => (isUnderline ? "underline" : "none")};
-    margin: 0 1rem;
-    font-size: 1.7rem;
-    text-transform: capitalize;
+    color: #fff;
+    margin: 0;
+    font-size: 1.5rem;
 
-    @media (min-width: 768px) {
-        font-size: 1.5rem;
-        margin: 0 0.5rem;
+    text-transform: capitalize;
+    font-weight: 400;
+    margin: 0;
+    :hover {
+        color: ${({color}) => color};
     }
-    @media (min-width: 1060px) {
-        font-size: 1.5rem;
-        margin: 0 1rem;
+
+    @media (max-width: 850px) {
+        font-size: 1.2rem;
+
+        :hover {
+            color: #000;
+        }
     }
 `;
 
 const StyledH4 = styled.h4<ThemePropsType>`
-    color: ${(p) => p.color};
-    text-decoration: ${({isUnderline}) => (isUnderline ? "underline" : "none")};
-    margin: 0 1rem;
-    font-size: 1.2rem;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 400;
     text-transform: capitalize;
+    margin: 0;
 
-    @media (min-width: 768px) {
-        font-size: 1.2rem;
-        margin: 0 0.5rem;
+    :hover {
+        color: ${({color}) => color};
     }
-    @media (min-width: 1060px) {
-        font-size: 1.2rem;
-        margin: 0 1rem;
+
+    @media (max-width: 850px) {
+        :hover {
+            color: #000;
+        }
+    }
+`;
+
+const NavButton = styled.button`
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
+
+    @media (max-width: 850px) {
+        text-align: left;
     }
 `;

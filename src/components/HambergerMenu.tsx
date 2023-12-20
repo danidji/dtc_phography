@@ -18,7 +18,7 @@ const HambergerMenu = ({openDrawer, open}: PropsType): JSX.Element => {
     const {color} = useThemeContext();
 
     return (
-        <DrawerWrapper className="drawer_wrapper" open={open} bgColor={color.secondary}>
+        <DrawerWrapper className="drawer_wrapper" open={open} bgColor={color.primary}>
             <HambergerButton className="hamberger_button" onClick={openDrawer}>
                 <StyledSpan bgColor={color.primary} open={open} />
                 <StyledSpan bgColor={color.primary} open={open} />
@@ -84,6 +84,12 @@ const StyledSpan = styled.span<ThemePropsType & DrawerPropsType>`
 
 const DrawerMenu = styled.div`
     width: 100%;
+    height: 100%;
     display: flex;
     margin: 1rem 0;
+
+    @media (max-width: 850px) {
+        margin: 0;
+        padding: 1rem;
+    }
 `;
