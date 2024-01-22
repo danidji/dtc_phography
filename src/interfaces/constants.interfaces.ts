@@ -19,7 +19,7 @@ export interface CarouselItemType {
 }
 
 export interface PriceFormulaType {
-    subTitle: string;
+    subTitle?: string;
     paragraph: string[];
 }
 

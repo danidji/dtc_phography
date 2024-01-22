@@ -29,8 +29,8 @@ const Home: NextPage = () => {
                         <StyledImage src={"/assets/images/presentation.jpg"} layout="fill" objectFit="cover" />
                     </div>
                     <PresentationContent className="presentation_content">
-                        <StyledH2>Petite Présentation en quelques lignes…</StyledH2>
-                        <StyledP>
+                        <StyledH2 color={color.secondary}>Petite Présentation en quelques lignes…</StyledH2>
+                        <StyledP color={color.secondary}>
                             Je me présente, Thien, je suis photographe en freelance et autodidacte depuis maintenant 2 ans. Une passion depuis ma plus
                             jeune enfance. Lorsque vous parcourez mon travail à travers le site internet, vous pouvez voir mon style un peu différent
                             de certains photographes. J’aime partir sur des réalisations artistiques, créatives. C’est ce qui me représente le plus ,
@@ -46,7 +46,7 @@ const Home: NextPage = () => {
                 </PresentationWrapper>
                 <SeparatorLine className="separator_line" bgColor={color.primary}></SeparatorLine>
                 <TestimonyContent className="testimony_content">
-                    <h1>Témoignages</h1>
+                    <h1 style={{color: color.secondary}}>Témoignages</h1>
                     <Carousel type={CarouselType.TESTIMONY} />
                 </TestimonyContent>
                 <CircleImage src={"/assets/images/circle_image1.jpg"} />
@@ -61,6 +61,10 @@ const ContentWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media (max-width: 850px) {
+        padding-top: 4rem;
+    }
 `;
 
 export const SeparatorLine = styled.div<ThemePropsType>`
@@ -97,12 +101,14 @@ const PresentationContent = styled.div<ThemePropsType>`
     margin-left: 1rem;
 `;
 
-const StyledH2 = styled.h2`
+const StyledH2 = styled.h2<ThemePropsType>`
     text-align: center;
+    color: ${(p) => p.color};
 `;
 
-const StyledP = styled.p`
+const StyledP = styled.p<ThemePropsType>`
     text-align: justify;
+    color: ${(p) => p.color};
 `;
 
 const TestimonyContent = styled.div`

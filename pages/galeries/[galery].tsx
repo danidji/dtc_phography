@@ -22,10 +22,11 @@ const Galery = ({content}: GaleryProps): JSX.Element => {
     const router = useRouter();
     const [displayImage, setDisplayImage] = useState<string | null>(null);
 
-    console.log(content?.imagesUrl.length);
     return (
         <GaleryWrapper className="galery_wrapper">
-            <StyledH1 className="galery_wrapper">{content?.title}</StyledH1>
+            <StyledH1 color={color.secondary} className="galery_wrapper">
+                {content?.title}
+            </StyledH1>
             <GridWrapper className="grid_wrapper" isGaleryCouple={router.asPath === "/galeries/couples-grossesses" ? true : false}>
                 {content?.imagesUrl ? (
                     content.imagesUrl.map((imageSrc: string, i: number): JSX.Element => {
@@ -97,6 +98,8 @@ const ButtonImage = styled.button<ThemePropsType>`
 `;
 
 const StyledH1 = styled.h1<ThemePropsType>`
+    color: ${(p) => p.color};
+
     @media (max-width: 850px) {
         font-size: 1.5rem;
         margin: 3rem 0;

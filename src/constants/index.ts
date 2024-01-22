@@ -67,44 +67,56 @@ export const carouselTestimony: CarouselItemType[] = [
 
 export const pricesItems: PricesItemsType[] = [
     {
-        title: "Formule Portrait Studio solo",
+        title: "Formule Portrait",
         pathImage: "/assets/images/tarifs/price_image1.jpg",
         priceFormula: [
             {
-                subTitle: "Formule Classique 170€",
-                paragraph: ["8 photos retouchées", "45min de shooting", "1 tenue", "Mise en beauté "],
+                subTitle: "Formule Plaisir 120€",
+                paragraph: ["1h de Shooting", "1 à 2 tenues", "1 Lieu", "7 Photos Numérique"],
             },
             {
-                subTitle: "Formule Plaisir 230€",
-                paragraph: ["12 photos retouchées", "1h30 de shooting", "2 tenues", "Mise en beauté "],
+                subTitle: "Formule Détente 230€",
+                paragraph: ["2h de shooting", "1 à 2 tenues", "2 Lieux", "13 Photos Numérique"],
+            },
+            {
+                paragraph: ["Suppléments", "10€/photo", "à partir de 40€/personne maquillage professionnelle selon la demande"],
             },
         ],
     },
     {
-        title: "Formule Portrait Duo/Couple/Grossesse",
+        title: "Formule Portrait /Couple/Famille",
         pathImage: "/assets/images/tarifs/price_image2.jpg",
         priceFormula: [
             {
-                subTitle: "Formule Classique 130€",
-                paragraph: ["8 photos retouchées", "45min de shooting", "1 lieu et 1 tenue"],
+                subTitle: "Formule Cupidon",
+                paragraph: ["120€ + 40€/pers de +3 ans", " 1h de Shooting", "1 à 2 tenues", "1 Lieu", "7 Photos Numérique"],
             },
             {
-                subTitle: "Formule Plaisir 230€",
-                paragraph: ["12 photos retouchées", "1h30 de shooting", "1 lieu et 2 tenues"],
+                subTitle: "Formule Complicitée",
+                paragraph: ["230€ + 40/pers de +3 ans", "2h de shooting", "1 à 2 tenues", "2 Lieux", "13 Photos Numérique"],
+            },
+            {
+                paragraph: ["Suppléments", "10€/photo", "à partir de 40€/personne maquillage professionnelle selon la demande"],
             },
         ],
     },
     {
-        title: "Formule Portrait Extérieur",
+        title: "Formule Artistique",
         pathImage: "/assets/images/tarifs/price_image3.jpg",
         priceFormula: [
             {
-                subTitle: "Formule Classique 90€",
-                paragraph: ["7 photos retouchées", "45min de shooting", "1 lieu et 1 tenue"],
+                subTitle: "Formule Art",
+                paragraph: [
+                    "230€ + 60€/pers de + 3 ans",
+                    "1h de Shooting + 30 min de préparation",
+                    "1 à 2 tenues",
+                    "10 Photos Numérique",
+                    "Mise en beauté par une professionnelle disponible",
+                ],
             },
             {
-                subTitle: "Formule Forfait 130€",
-                paragraph: ["10 photos retouchées", "1h30 de shooting", "1 lieu et 2 tenues"],
+                subTitle: "Formule Féérique",
+                paragraph: ["Sur Devis", "2h30 de Shooting", "1 tenue", "Maquillage compté dans la formule"],
             },
         ],
     },

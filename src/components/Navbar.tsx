@@ -104,7 +104,7 @@ const StyledUl = styled.ul<ThemePropsType>`
 `;
 
 const StyledH3 = styled.h3<ThemePropsType>`
-    color: #fff;
+    color: #cdcdcd;
     margin: 0;
     font-size: 1.5rem;
 

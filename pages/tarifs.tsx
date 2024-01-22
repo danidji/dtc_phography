@@ -23,7 +23,7 @@ const Prices: NextPage = () => {
     const renderPricesItem = (items: PricesItemsType[]): JSX.Element[] => {
         return items.map(
             (item: PricesItemsType, i: number): JSX.Element => (
-                <ContentPricesItems className="content_prices_item" key={i} num={i + 1}>
+                <ContentPricesItems className="content_prices_item" key={`price_item${i}`} num={i + 1}>
                     <PricesImage className="prices_image" style={{position: "relative", width: "100%", height: "100%"}}>
                         <Image src={item.pathImage} layout="fill" objectFit="cover" priority alt="tarifs images" />
                     </PricesImage>
@@ -47,7 +47,7 @@ const Prices: NextPage = () => {
             </Head>
 
             <PricesWrapper className="prices_wrapper">
-                <h1> Tarifs </h1>
+                <h1 style={{color: color.secondary}}> Tarifs </h1>
                 <StyledSeparatorLine bgColor={color.primary} />
                 <ContentPricesWrapper className="content_prices_wrapper">
                     <ContentPricesItems className="content_prices_item" num={0}>
@@ -55,7 +55,7 @@ const Prices: NextPage = () => {
                             <Image src={"/assets/images/tarifs/presentation.jpg"} layout="fill" objectFit="cover" priority alt="tarifs images" />
                         </PricesImage>
                         <PricesInfos className="prices_infos">
-                            <StyledP>
+                            <StyledP color={color.secondary}>
                                 Oh je vois que vous hésitez…
                                 <br /> N&apos;ayez pas peur de vous lancer, promis je ne vous mord pas!!
                                 <br /> Dans chacune de mes formules, nous aurons beaucoup d&apos;échanges afin que vous soyez confiant pour vous
@@ -70,7 +70,7 @@ const Prices: NextPage = () => {
                     </ContentPricesItems>
                     {renderPricesItem(pricesItems)}
                     <ContactWrapper className="contact_wrapper">
-                        <StyledP>Pour plus d&lsquo;informations ou pour commander un forfait : </StyledP>
+                        <StyledP color={color.secondary}>Pour plus d&lsquo;informations ou pour commander un forfait : </StyledP>
                         <StyledButton onClick={handleClick} bgColor={color.primary}>
                             Contactez moi
                         </StyledButton>
