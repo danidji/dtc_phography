@@ -18,10 +18,6 @@ const Navbar = ({openDrawer}: PropsType): JSX.Element => {
     const {isMobile} = useDetectMobileWindow();
     const [openSubCategories, setOpenSubCategories] = useState<boolean>(false);
 
-    const returnFontColor = (): string => {
-        return isMobile ? color.background : color.secondary;
-    };
-
     return (
         <StyledUl isMobile={isMobile}>
             {navBarItems.map(
@@ -58,6 +54,7 @@ const Navbar = ({openDrawer}: PropsType): JSX.Element => {
                                 <a
                                     onClick={() => {
                                         if (openDrawer) openDrawer();
+                                        setOpenSubCategories(false);
                                     }}
                                 >
                                     <StyledH3

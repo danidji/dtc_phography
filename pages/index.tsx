@@ -107,6 +107,7 @@ const StyledP = styled.p`
 
 const TestimonyContent = styled.div`
     margin: 2rem 0 7rem 0;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;

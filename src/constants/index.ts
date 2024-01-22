@@ -29,18 +29,39 @@ export const carouselImages: CarouselItemType[] = [
 export const carouselTestimony: CarouselItemType[] = [
     {
         id: 1,
-        path: "/assets/images/temoignages/temoignage-1.jpg",
-        text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure autem consequatur quisquam incidunt sit unde.",
+        path: "/assets/images/temoignages/temoignage1.jpg",
+        text: "J’ai eu l’occasion de shooter avec Thien pendant un festival de photo. C’était ma première expérience en tant que modèle et…quelle expérience 😍 \nThien est bienveillante, à l’écoute, et toujours pleine de blagues et de bons conseils pour vous mettre à l’aise. Le résultat était sublime, je suis vraiment contente d’avoir franchi le cap avec elle et pas quelqu’un d’autre 😍",
+        name: "Manon",
     },
     {
         id: 2,
-        path: "/assets/images/temoignages/temoignage-2.jpg",
-        text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, tempora?",
+        path: "/assets/images/temoignages/temoignage2.jpg",
+        text: "Deux super séances avec toi, tu es très gentille, agréable et tu mets à l’aise facilement. Le résultat est top donc tout est parfait, je recommande et d’ailleurs j’espère que l’on se refera des séances 😄",
+        name: "Manuela",
     },
     {
         id: 3,
-        path: "/assets/images/temoignages/temoignage-3.jpg",
-        text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam itaque ea iure expedita?",
+        path: "/assets/images/temoignages/temoignage3.jpg",
+        text: "Très agréable moment passée avec Thien avec des photos génialissimes! Thien est passionnée, est à l’écoute et est très professionnelle. Nous avons reçu les clichés dans un temps plus que correct! Je recommande!!!",
+        name: "Johanna",
+    },
+    {
+        id: 4,
+        path: "/assets/images/temoignages/temoignage4.jpg",
+        text: "Un petit café de convivialité + un vrai temps maquillage où l’on est chouchouté + de bons rires 😜 + une communication très claire et professionnelle; le tout pour un rendu vraiment singulier ! Particulièrement ravie de cette expérience !!!",
+        name: "Victoria",
+    },
+    {
+        id: 5,
+        path: "/assets/images/temoignages/temoignage5.jpg",
+        text: "J’ai eu de la chance de travailler régulièrement avec Thien pour différents projets. Tout s’est toujours passé à merveille! Une belle entente couplée de son professionnalisme pour des séances de qualité! Je vous recommande vivement 😇",
+        name: "Lauréline",
+    },
+    {
+        id: 6,
+        path: "/assets/images/temoignages/temoignage6.jpg",
+        text: "J’ai fait 3 séances photos avec Thien et je n’ai jamais été déçu. Photos magnifiques. Passionnée et très inspirée. Amie et photographe formidable.N’hésitez plus !!!!",
+        name: "Océane",
     },
 ];
 

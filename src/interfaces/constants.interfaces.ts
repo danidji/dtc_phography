@@ -15,6 +15,7 @@ export interface CarouselItemType {
     id: number;
     path: string;
     text?: string;
+    name?: string;
 }
 
 export interface PriceFormulaType {
