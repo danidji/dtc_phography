@@ -52,7 +52,6 @@ export default Galery;
 export const getServerSideProps: GetServerSideProps = async ({params}) => {
     let pageContent: PageContentType | null = null;
     if (typeof params?.galery === "string") {
-        console.log(params.galery);
         pageContent = await axiosGetPageContent(params.galery);
     }
 

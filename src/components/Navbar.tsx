@@ -125,7 +125,7 @@ const StyledH3 = styled.h3<ThemePropsType>`
 `;
 
 const StyledH4 = styled.h4<ThemePropsType>`
-    color: #fff;
+    color: #cdcdcd;
     font-size: 1rem;
     font-weight: 400;
     text-transform: capitalize;
